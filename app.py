@@ -38,5 +38,15 @@ class Phonebook:
             for i, contact in enumerate(self.contacts, start=1):
                 print(f"{i}. {contact['name']} - {contact['phone']}")
 
+    # Search contacts
+    def search_contact(self, query):
+        results = [contact for contact in self.contacts if query in contact['name'] or query in contact['phone']]
+        if results:
+            for contact in results:
+                print(f"{contact['name']} - {contact['phone']}")
+        else:
+            print("No matching contacts found.")
+
+
 
 
