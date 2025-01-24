@@ -47,6 +47,15 @@ class Phonebook:
         else:
             print("No matching contacts found.")
 
+    # Delete contact
+    def delete_contact(self, name):
+        for contact in self.contacts:
+            if contact['name'] == name:
+                self.contacts.remove(contact)
+                print(f"Contact '{name}' deleted.")
+                return
+        print("Contact not found.")
+
 
 
 
