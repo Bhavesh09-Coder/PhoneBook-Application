@@ -22,6 +22,13 @@ class Phonebook:
             pickle.dump(self.contacts, file)
         print("Contacts saved successfully.")
 
+    # Add contact
+    def add_contact(self, name, phone):
+        if self.check_duplicate(name, phone):
+            print('Contact already exists.')
+            return
+        self.contacts.append({"name": name, "phone": phone})
+        print(f"Contact '{name}' added.")
     
     # View all contacts
     def view_contacts(self):
@@ -31,5 +38,5 @@ class Phonebook:
             for i, contact in enumerate(self.contacts, start=1):
                 print(f"{i}. {contact['name']} - {contact['phone']}")
 
-                
+
 
