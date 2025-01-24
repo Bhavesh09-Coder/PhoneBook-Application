@@ -22,4 +22,14 @@ class Phonebook:
             pickle.dump(self.contacts, file)
         print("Contacts saved successfully.")
 
-        
+    
+    # View all contacts
+    def view_contacts(self):
+        if not self.contacts:
+            print("No contacts to display.")
+        else:
+            for i, contact in enumerate(self.contacts, start=1):
+                print(f"{i}. {contact['name']} - {contact['phone']}")
+
+                
+
