@@ -1,12 +1,8 @@
-
-## Project : Phonebook Application
-
 import pickle
 
 class Phonebook:
     def __init__(self):
         self.contacts = self.load_contacts()
-
 
     def load_contacts(self):
         try:
@@ -29,7 +25,7 @@ class Phonebook:
             return
         self.contacts.append({"name": name, "phone": phone})
         print(f"Contact '{name}' added.")
-    
+
     # View all contacts
     def view_contacts(self):
         if not self.contacts:
@@ -56,6 +52,42 @@ class Phonebook:
                 return
         print("Contact not found.")
 
+    # Check for duplicate contacts
+    def check_duplicate(self, name, phone):
+        for contact in self.contacts:
+            if contact['name'] == name and contact['phone'] == phone:
+                return True
+        return False
 
+def main():
+    phonebook = Phonebook()
+    while True:
+        print("\nPhonebook Menu:")
+        print("1. View Contacts")
+        print("2. Add Contact")
+        print("3. Search Contact")
+        print("4. Delete Contact")
+        print("5. Save & Exit")
+        choice = input("Choose an option: ")
 
+        if choice == '1':
+            phonebook.view_contacts()
+        elif choice == '2':
+            name = input("Enter contact name: ")
+            phone = input("Enter contact phone number: ")
+            phonebook.add_contact(name, phone)
+        elif choice == '3':
+            query = input("Enter search query: ")
+            phonebook.search_contact(query)
+        elif choice == '4':
+            name = input("Enter contact name to delete: ")
+            phonebook.delete_contact(name)
+        elif choice == '5':
+            phonebook.save_contacts()
+            print("Exiting phonebook.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
+if __name__ == "__main__":
+    main()
